@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <title>kedycode programming blog</title>
+    <title>KEDYCODE // SYSTEM_LOG</title>
     
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,100..1000&display=swap" rel="stylesheet">
@@ -13,29 +14,31 @@
     <style>
         :root {
             --google-blue: #1a73e8;
-            --keycode-black: #050505;
-            --keycode-gray: #121212;
+            --kedy-black: #050505;
+            --kedy-gray: #121212;
             --text-main: #e8eaed;
             --text-muted: #9aa0a6;
         }
+
+        * { box-sizing: border-box; } /* Fixes overflow issues */
 
         body {
             font-family: 'Google Sans Flex', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--keycode-black);
+            background-color: var(--kedy-black);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
-        /* --- HEADER BRANDING --- */
-        .keycode-header {
-            padding: 30px 5%;
-            border-bottom: 1px solid var(--keycode-gray);
+        /* --- HEADER --- */
+        .kedycode-header {
+            padding: 20px 5%;
+            border-bottom: 1px solid var(--kedy-gray);
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .brand {
@@ -45,109 +48,74 @@
             color: var(--google-blue);
         }
 
-        /* --- GIANT HERO POST (First Post) --- */
+        /* --- GIANT HERO (Fixes "Going Out" error) --- */
         #blog-container .blog-post:first-child {
             width: 100%;
-            min-height: 90vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 100px 8%;
-            box-sizing: border-box;
-            background: radial-gradient(circle at top left, rgba(26,115,232,0.15) 0%, rgba(5,5,5,1) 70%);
-            border-bottom: 1px solid var(--keycode-gray);
+            padding: 60px 5%;
+            background: radial-gradient(circle at top left, rgba(26,115,232,0.1) 0%, rgba(5,5,5,1) 80%);
+            border-bottom: 1px solid var(--kedy-gray);
         }
 
         #blog-container .blog-post:first-child .blog-title {
-            font-size: clamp(3.5rem, 15vw, 9rem);
-            font-variation-settings: "wght" 1000, "opsz" 144;
-            line-height: 0.85;
-            letter-spacing: -0.05em;
+            font-size: clamp(2.5rem, 12vw, 8rem); /* Dynamically shrinks for mobile */
+            font-variation-settings: "wght" 1000;
+            line-height: 0.9;
+            word-wrap: break-word; /* Forces long words to wrap */
+            overflow-wrap: break-word;
+            margin: 10px 0;
             text-transform: uppercase;
-            margin: 20px 0;
-            background: linear-gradient(to bottom, #fff 40%, #444 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
-        #blog-container .blog-post:first-child .blog-content {
-            font-size: 1.4rem;
-            max-width: 800px;
-            color: var(--text-main);
-            font-variation-settings: "wght" 300;
-        }
-
-        /* --- STANDARD FEED WRAPPER --- */
+        /* --- CONTENT FEED --- */
         .content-wrapper {
-            max-width: 850px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
-        .blog-post { margin-bottom: 120px; }
-        .blog-title { font-size: 2.8rem; font-variation-settings: "wght" 800; margin-bottom: 15px; color: #fff; }
-        .blog-date { font-size: 0.85rem; color: var(--google-blue); font-variation-settings: "wght" 700; letter-spacing: 0.1em; margin-bottom: 10px; }
-        .blog-content { font-size: 1.2rem; color: var(--text-muted); white-space: pre-wrap; }
-        
-        .blog-image {
-            width: 100%;
-            border-radius: 4px;
-            margin-top: 30px;
-            border: 1px solid var(--keycode-gray);
-        }
+        .blog-post { margin-bottom: 80px; width: 100%; }
+        .blog-title { font-size: 2.2rem; font-variation-settings: "wght" 800; color: #fff; margin-bottom: 10px; }
+        .blog-date { color: var(--google-blue); font-size: 0.8rem; letter-spacing: 0.1em; }
+        .blog-content { color: var(--text-muted); white-space: pre-wrap; word-break: break-word; }
 
-        /* --- GUESTBOOK SECTION --- */
-        .guestbook-section {
-            background: #0a0a0a;
-            padding: 100px 20px;
-            border-top: 1px solid var(--keycode-gray);
-        }
+        .blog-image { width: 100%; height: auto; border-radius: 4px; margin-top: 20px; }
 
+        /* --- GUESTBOOK --- */
+        .guestbook-section { background: #080808; padding: 60px 20px; border-top: 1px solid var(--kedy-gray); }
         .guestbook-inner { max-width: 600px; margin: 0 auto; }
         
-        form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 50px; }
-        input, textarea {
-            background: #000;
-            border: 1px solid #222;
-            padding: 15px;
-            color: #fff;
-            font-family: inherit;
-            border-radius: 4px;
-        }
+        form { display: flex; flex-direction: column; gap: 10px; }
+        input, textarea { background: #000; border: 1px solid #222; padding: 15px; color: #fff; font-family: inherit; }
         
         button {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 18px;
-            font-variation-settings: "wght" 900;
-            cursor: pointer;
-            letter-spacing: 0.1em;
-            transition: 0.2s;
+            background: #fff; color: #000; border: none; padding: 15px; 
+            font-variation-settings: "wght" 900; cursor: pointer; text-transform: uppercase;
         }
         button:hover { background: var(--google-blue); color: #fff; }
 
-        .entry { border-bottom: 1px solid #1a1a1a; padding: 25px 0; }
-        .entry-name { color: var(--google-blue); font-variation-settings: "wght" 800; display: block; }
+        .entry { border-bottom: 1px solid #111; padding: 20px 0; }
         .hp-field { display: none !important; }
     </style>
 </head>
 <body>
 
-    <header class="keycode-header">
-        <div class="brand">SYSTEM_PROTOCOL // KEYCODE</div>
-        <div style="font-size: 0.7rem; color: var(--text-muted);">STATUS: ONLINE</div>
+    <header class="kedycode-header">
+        <div class="brand">KEDYCODE // LOG</div>
+        <div style="font-size: 0.7rem; opacity: 0.5;">v1.0.4_STABLE</div>
     </header>
 
-    <div id="blog-container">
-        </div>
+    <div id="blog-container"></div>
 
     <section class="guestbook-section">
         <div class="guestbook-inner">
-            <h2 style="letter-spacing: 0.2em; font-size: 1rem; color: var(--text-muted);">COMMUNITY_LOG</h2>
+            <h2 style="font-size: 0.8rem; letter-spacing: 0.2em; color: var(--text-muted);">// COMMUNITY_ACCESS</h2>
             <form id="guestbook-form">
                 <input type="text" id="field_id_hp" class="hp-field" tabindex="-1">
-                <input type="text" id="username" placeholder="IDENT_NAME" required>
+                <input type="text" id="username" placeholder="IDENT_ID" required>
                 <textarea id="message" placeholder="MESSAGE_DATA" rows="3" required></textarea>
                 <button type="submit" id="submit-btn">TRANSMIT</button>
             </form>
@@ -172,47 +140,40 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // --- BLOG LOAD ---
-        const blogContainer = document.getElementById('blog-container');
+        // BLOG
         onSnapshot(query(collection(db, "posts"), orderBy("createdAt", "desc")), (snapshot) => {
-            blogContainer.innerHTML = "";
+            const container = document.getElementById('blog-container');
+            container.innerHTML = "";
             snapshot.forEach((doc, index) => {
                 const post = doc.data();
-                const date = post.createdAt?.toDate ? post.createdAt.toDate().toLocaleDateString() : 'LOG_PHASE_1';
-                const imageHtml = post.imageUrl ? `<img src="${post.imageUrl}" class="blog-image">` : '';
-                
                 const wrapperStart = index === 0 ? '' : '<div class="content-wrapper">';
                 const wrapperEnd = index === 0 ? '' : '</div>';
+                const img = post.imageUrl ? `<img src="${post.imageUrl}" class="blog-image">` : '';
 
-                blogContainer.innerHTML += `
+                container.innerHTML += `
                     ${wrapperStart}
                     <article class="blog-post">
-                        <div class="blog-date">// ENTRY_DATE: ${date}</div>
+                        <div class="blog-date">// ${post.createdAt?.toDate().toLocaleDateString() || 'NEW'}</div>
                         <div class="blog-title">${post.title}</div>
                         <div class="blog-content">${post.content}</div>
-                        ${imageHtml}
+                        ${img}
                     </article>
                     ${wrapperEnd}
                 `;
             });
         });
 
-        // --- GUESTBOOK LOAD ---
-        const entryContainer = document.getElementById('guestbook-entries');
+        // GUESTBOOK
         onSnapshot(query(collection(db, "guestbook"), orderBy("createdAt", "desc")), (snapshot) => {
-            entryContainer.innerHTML = "";
+            const gb = document.getElementById('guestbook-entries');
+            gb.innerHTML = "";
             snapshot.forEach((doc) => {
                 const entry = doc.data();
-                entryContainer.innerHTML += `
-                    <div class="entry">
-                        <span class="entry-name">> ${entry.username}</span>
-                        <p style="margin: 5px 0 0 15px;">${entry.message}</p>
-                    </div>
-                `;
+                gb.innerHTML += `<div class="entry"><b style="color:var(--google-blue)">> ${entry.username}</b><p>${entry.message}</p></div>`;
             });
         });
 
-        // --- GUESTBOOK TRANSMIT ---
+        // SUBMIT
         document.getElementById('guestbook-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
